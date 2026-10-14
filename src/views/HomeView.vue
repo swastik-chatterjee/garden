@@ -13,9 +13,9 @@ const usagePct = computed(() => {
 });
 
 const cards = computed(() => [
-  { icon: 'mdi-file-document-outline', label: 'Pages', value: String(pages.value.length || 0) },
-  { icon: 'mdi-tag-outline', label: 'Tags', value: String(allTags.value.length || 0) },
-  { icon: 'mdi-link-variant', label: 'Wikilinks', value: String(linkStats.value.resolved || 0) },
+  { icon: '$mdiFileDocumentOutline', label: 'Pages', value: String(pages.value.length || 0) },
+  { icon: '$mdiTagOutline', label: 'Tags', value: String(allTags.value.length || 0) },
+  { icon: '$mdiLinkVariant', label: 'Wikilinks', value: String(linkStats.value.resolved || 0) },
 ]);
 </script>
 
@@ -34,7 +34,7 @@ const cards = computed(() => [
           <v-card class="hero pa-6 pa-md-8 mb-6" variant="outlined">
             <div class="d-flex flex-wrap align-center">
               <v-avatar color="primary" size="56" class="mr-4 mb-2">
-                <v-icon icon="mdi-sprout" size="32" />
+                <v-icon icon="$mdiSprout" size="32" />
               </v-avatar>
               <div>
                 <div class="text-h4 font-weight-bold">Your digital garden</div>
@@ -45,11 +45,11 @@ const cards = computed(() => [
               </div>
             </div>
             <div class="d-flex flex-wrap ga-3 mt-6">
-              <v-btn color="primary" variant="flat" prepend-icon="mdi-file-plus-outline" @click="newPage = true">
+              <v-btn color="primary" variant="flat" prepend-icon="$mdiFilePlusOutline" @click="newPage = true">
                 New page
               </v-btn>
-              <v-btn variant="tonal" prepend-icon="mdi-graph-outline" :to="{ name: 'graph' }">Link graph</v-btn>
-              <v-btn variant="tonal" prepend-icon="mdi-magnify" :to="{ name: 'search' }">Search</v-btn>
+              <v-btn variant="tonal" prepend-icon="$mdiGraphOutline" :to="{ name: 'graph' }">Link graph</v-btn>
+              <v-btn variant="tonal" prepend-icon="$mdiMagnify" :to="{ name: 'search' }">Search</v-btn>
             </div>
           </v-card>
 
@@ -87,7 +87,7 @@ const cards = computed(() => [
           <v-list v-if="recent.length" lines="two">
             <v-list-item v-for="p in recent" :key="p.path" :to="{ name: 'page', params: { path: p.path } }">
               <template #prepend>
-                <v-icon icon="mdi-file-document-outline" color="primary" />
+                <v-icon icon="$mdiFileDocumentOutline" color="primary" />
               </template>
               <v-list-item-title>{{ p.title }}</v-list-item-title>
               <v-list-item-subtitle>{{ p.path }} · {{ formatDate(p.modified) }}</v-list-item-subtitle>

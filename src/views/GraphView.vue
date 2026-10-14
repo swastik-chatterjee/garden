@@ -35,10 +35,10 @@ onMounted(() => build());
 
         <div class="d-flex flex-wrap align-center mb-4 ga-2">
           <div class="text-h5 font-weight-bold mr-2">Link graph</div>
-          <v-chip label variant="tonal" size="small" prepend-icon="mdi-file-document-outline">
+          <v-chip label variant="tonal" size="small" prepend-icon="$mdiFileDocumentOutline">
             {{ model?.pages ?? '…' }} pages
           </v-chip>
-          <v-chip label variant="tonal" size="small" prepend-icon="mdi-link-variant">
+          <v-chip label variant="tonal" size="small" prepend-icon="$mdiLinkVariant">
           
           </v-chip>
           <v-chip v-if="model?.orphans?.length" label variant="tonal" size="small" color="warning">

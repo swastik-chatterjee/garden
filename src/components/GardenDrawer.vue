@@ -26,7 +26,7 @@ watch(currentPath, (path) => {
 
     <div class="pa-4 pb-2">
       <v-btn block color="primary" variant="flat" size="large"
-        prepend-icon="mdi-file-plus-outline" @click="dialog = true">
+        prepend-icon="$mdiFilePlusOutline" @click="dialog = true">
         New page
       </v-btn>
       <div class="text-caption text-medium-emphasis mt-3">
@@ -37,15 +37,15 @@ watch(currentPath, (path) => {
     </div>
 
     <v-list v-model:opened="opened" nav density="compact">
-      <v-list-item prepend-icon="mdi-home-outline" title="Home" :to="{ name: 'home' }" />
-      <v-list-item prepend-icon="mdi-magnify" title="Search" :to="{ name: 'search' }" />
-      <v-list-item prepend-icon="mdi-graph-outline" title="Link graph" :to="{ name: 'graph' }" />
+      <v-list-item prepend-icon="$mdiHomeOutline" title="Home" :to="{ name: 'home' }" />
+      <v-list-item prepend-icon="$mdiMagnify" title="Search" :to="{ name: 'search' }" />
+      <v-list-item prepend-icon="$mdiGraphOutline" title="Link graph" :to="{ name: 'graph' }" />
       <v-divider class="my-2" />
       <v-list-subheader>Pages</v-list-subheader>
 
       <v-list-group v-for="group in folders" :key="group.folder || '~'" :value="group.folder">
         <template #activator="{ props }">
-          <v-list-item v-bind="props" prepend-icon="mdi-folder-outline"
+          <v-list-item v-bind="props" prepend-icon="$mdiFolderOutline"
             :title="group.folder || 'Top level'" />
         </template>
         <v-list-item v-for="p in group.list" :key="p.path" :title="p.title"

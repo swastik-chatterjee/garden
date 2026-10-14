@@ -49,7 +49,7 @@ function go(path) { router.push({ name: 'page', params: { path } }); }
       <v-col cols="12" md="10" lg="8">
 
         <v-text-field v-model="q" autofocus variant="outlined" rounded
-          prepend-inner-icon="mdi-magnify" clearable hide-details
+          prepend-inner-icon="$mdiMagnify" clearable hide-details
           placeholder="Search pages, tags and content — try “gantt”, “gardn” or “tag:guide”" />
 
         <div v-if="!garden.ready" class="text-center py-12">

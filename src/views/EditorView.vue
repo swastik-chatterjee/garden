@@ -51,7 +51,7 @@ function newPageContent() {
           <h1 class="text-h5 font-weight-bold">{{ heading }}</h1>
           <v-spacer />
           <v-btn variant="text" @click="router.back()">Cancel</v-btn>
-          <v-btn color="primary" variant="flat" prepend-icon="mdi-content-save-outline"
+          <v-btn color="primary" variant="flat" prepend-icon="$mdiContentSaveOutline"
             :disabled="!loaded || !content.trim()" :loading="saving" @click="save">
             Save
           </v-btn>

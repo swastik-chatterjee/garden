@@ -163,7 +163,7 @@ async function onDelete() {
       <v-col cols="12" :lg="asideVisible ? 8 : 9" :xl="asideVisible ? 8 : 9">
 
         <div class="d-flex flex-wrap align-center ga-2 mb-2">
-          <v-chip v-if="note.folder" size="small" label variant="tonal" prepend-icon="mdi-folder-outline">
+          <v-chip v-if="note.folder" size="small" label variant="tonal" prepend-icon="$mdiFolderOutline">
             {{ note.folder }}/
           </v-chip>
           <v-chip v-for="tag in note.tags" :key="tag" size="small" label link variant="tonal" color="primary"
@@ -171,9 +171,9 @@ async function onDelete() {
             #{{ tag }}
           </v-chip>
           <v-spacer />
-          <v-btn size="small" variant="text" prepend-icon="mdi-pencil-outline"
+          <v-btn size="small" variant="text" prepend-icon="$mdiPencilOutline"
             :to="{ name: 'edit', params: { path: note.path } }">Edit</v-btn>
-          <v-btn size="small" variant="text" color="error" prepend-icon="mdi-delete-outline"
+          <v-btn size="small" variant="text" color="error" prepend-icon="$mdiDeleteOutline"
             @click="confirmDelete = true">Delete</v-btn>
         </div>
 
@@ -227,12 +227,12 @@ async function onDelete() {
     <v-row v-else justify="center">
       <v-col cols="12" md="8" lg="6">
         <v-card variant="outlined" class="pa-8 text-center">
-          <v-icon icon="mdi-sprout" size="48" color="primary" class="mb-4" />
+          <v-icon icon="$mdiSprout" size="48" color="primary" class="mb-4" />
           <div class="text-h6 mb-1">“{{ suggestedTitle }}” hasn't been planted yet</div>
           <div class="text-body-2 text-medium-emphasis mb-6">
             Nothing lives at <code>{{ path }}</code>. One click and you're in the editor.
           </div>
-          <v-btn color="primary" prepend-icon="mdi-pencil-outline"
+          <v-btn color="primary" prepend-icon="$mdiPencilOutline"
             :to="{ name: 'edit', params: { path: 'new' }, query: { title: suggestedTitle, folder: missingFolder } }">
             Create this page
           </v-btn>

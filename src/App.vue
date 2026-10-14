@@ -52,7 +52,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onShortcut));
         <v-app-bar-nav-icon @click="drawer = !drawer" />
       </template>
 
-      <v-icon icon="mdi-sprout" color="primary" size="28" class="ml-1"
+      <v-icon icon="$mdiSprout" color="primary" size="28" class="ml-1"
         style="cursor: pointer" @click="router.push({ name: 'home' })" />
 
       <v-toolbar-title class="d-none d-sm-flex flex-column ml-1" style="cursor: pointer"
@@ -70,13 +70,13 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onShortcut));
         style="max-width: 360px; min-width: 180px"
         density="compact" variant="outlined" rounded hide-details
         placeholder="Search (Ctrl-K)"
-        prepend-inner-icon="mdi-magnify"
+        prepend-inner-icon="$mdiMagnify"
         clearable
         @keyup.enter="submitSearch"
       />
 
-      <v-btn icon="mdi-graph-outline" variant="text" title="Link graph" :to="{ name: 'graph' }" />
-      <v-btn :icon="isDark ? 'mdi-weather-sunny' : 'mdi-weather-night'" variant="text"
+      <v-btn icon="$mdiGraphOutline" variant="text" title="Link graph" :to="{ name: 'graph' }" />
+      <v-btn :icon="isDark ? '$mdiWeatherSunny' : '$mdiWeatherNight'" variant="text"
         :title="isDark ? 'Switch to light' : 'Switch to dark'" @click="toggleTheme" />
     </v-app-bar>
 
