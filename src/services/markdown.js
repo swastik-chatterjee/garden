@@ -9,7 +9,7 @@ const md = new MarkdownIt({
   typographer: true,
 });
 
-md.use(anchor, { level: [1, 2, 3, 4] }));
+md.use(anchor, { level: [1, 2, 3, 4] });
 
 /* [[Page]] · [[Page#Section]] · [[Page|Label]] → internal anchors */
 md.inline.ruler.before('link', 'wikilink', (state, silent) => {

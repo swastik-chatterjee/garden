@@ -2,7 +2,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useTheme } from 'vuetify';
-import ConfirmDialog from '@/components/ConfirmDialog.vue';
+import ConfirmDialog from '@/components/ConformDialog.vue';
 import {
   backlinksTo, deleteNote, formatBytes, formatDate, garden, notify,
   outgoingOf, resolveWiki,
