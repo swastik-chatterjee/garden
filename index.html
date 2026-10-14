@@ -2,78 +2,175 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Inline favicon (SVG sprout, no extra file needed) -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data\:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232e7d32'/%3E%3Cpath d='M16 27V14' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M16 16c0-5-3-8-8-8 0 5 3 8 8 8z' fill='%2381c784'/%3E%3Cpath d='M16 13c0-5 3-8 8-8 0 5-3 8-8 8z' fill='%23a5d6a7'/%3E%3C/svg%3E"
-    />
-    <link rel="apple-touch-icon" href="data\:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232e7d32'/%3E%3Cpath d='M16 27V14' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M16 16c0-5-3-8-8-8 0 5 3 8 8 8z' fill='%2381c784'/%3E%3Cpath d='M16 13c0-5 3-8 8-8 0 5-3 8-8 8z' fill='%23a5d6a7'/%3E%3C/svg%3E" />
+    <!-- Favicon (separate SVG file at repo root) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#2e7d32" />
 
-    <!-- Primary SEO -->
-    <title>Garden — Local-First Markdown Wiki in Your Browser (OPFS)</title>
+    <!-- Identity -->
+    <title>Garden — Local-First Markdown Wiki That Lives in Your Browser (OPFS)</title>
     <meta
       name="description"
-      content="Garden is a free, local-first Markdown wiki that runs entirely in your browser. Pages are stored privately in OPFS with wikilinks, backlinks, a Mermaid link graph, full-text search, and offline support. No server, no account, no tracking."
+      content="Garden is a free, open-source, local-first Markdown wiki that runs entirely in your browser. Pages are stored privately in OPFS with wikilinks, automatic backlinks, a Mermaid link graph, and full-text fuzzy search. No server, no account, no tracking, works offline."
     />
     <meta
       name="keywords"
-      content="markdown wiki, local-first, OPFS, digital garden, note-taking, offline wiki, wikilinks, backlinks, knowledge graph, browser storage, vue, privacy"
+      content="markdown wiki, local-first, OPFS, digital garden, note taking, offline wiki, wikilinks, backlinks, knowledge graph, second brain, browser storage, privacy, vue, vuetify, mermaid, agpl"
     />
     <meta name="author" content="Swastik Chatterjee" />
-    <meta name="robots" content="index, follow, max-image-preview\:large, max-snippet:-1" />
-    <meta name="theme-color" content="#2e7d32" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1b1b1b" media="(prefers-color-scheme: dark)" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="creator" content="Swastik Chatterjee" />
+    <meta name="publisher" content="Swastik Chatterjee" />
+    <link rel="author" href="https://github.com/swastik-chatterjee" />
     <link rel="canonical" href="https://garden-avc.pages.dev/" />
 
+    <!-- Crawlers and indexing -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="google" content="notranslate" />
+    <meta name="rating" content="general" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="distribution" content="global" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- PWA / theming -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#2e7d32" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1b1b1b" media="(prefers-color-scheme: dark)" />
+    <meta name="application-name" content="Garden" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Garden" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
     <!-- Open Graph -->
-    <meta property="og\:type" content="website" />
-    <meta property="og\:site_name" content="Garden" />
-    <meta property="og\:title" content="Garden — Local-First Markdown Wiki in Your Browser" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Garden" />
+    <meta property="og:title" content="Garden — Local-First Markdown Wiki That Lives in Your Browser" />
     <meta
       property="og:description"
-      content="A private Markdown wiki that lives entirely in your browser. Wikilinks, backlinks, link graph, and search — no server, no account."
+      content="A private Markdown wiki stored in your browser's OPFS. Wikilinks, backlinks, link graph, and full-text search — no server, no account."
     />
-    <meta property="og\:url" content="https://garden-avc.pages.dev/" />
-    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://garden-avc.pages.dev/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:alt" content="Garden — a local OPFS wiki" />
+    <!-- Add when you have a preview image, e.g. 1200x630:
+    <meta property="og:image" content="https://garden-avc.pages.dev/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" /> -->
 
     <!-- Twitter / X -->
-    <meta name="twitter\:card" content="summary" />
-    <meta name="twitter\:title" content="Garden — Local-First Markdown Wiki in Your Browser" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Garden — Local-First Markdown Wiki in Your Browser" />
     <meta
       name="twitter:description"
       content="A private Markdown wiki that lives entirely in your browser. Wikilinks, backlinks, link graph, and search — no server, no account."
     />
+    <meta name="twitter:image:alt" content="Garden — a local OPFS wiki" />
+
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://garden-avc.pages.dev" crossorigin />
+    <link rel="dns-prefetch" href="https://garden-avc.pages.dev" />
 
     <!-- JSON-LD structured data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Garden",
-        "url": "https://garden-avc.pages.dev/",
-        "description": "Local-first Markdown wiki stored in the browser's Origin Private File System (OPFS), with wikilinks, backlinks, a Mermaid link graph, and full-text search.",
-        "applicationCategory": "ProductivityApplication",
-        "operatingSystem": "Any (browser with OPFS support)",
-        "browserRequirements": "Requires a modern browser with OPFS support served from localhost or HTTPS",
-        "isAccessibleForFree": true,
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "softwareVersion": "1.0.0",
-        "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-        "author": { "@type": "Person", "name": "Swastik Chatterjee" },
-        "keywords": "markdown wiki, local-first, OPFS, digital garden, offline notes"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://garden-avc.pages.dev/#website",
+            "url": "https://garden-avc.pages.dev/",
+            "name": "Garden",
+            "description": "Local-first Markdown wiki stored in the browser's Origin Private File System (OPFS).",
+            "inLanguage": "en",
+            "publisher": {
+              "@id": "https://garden-avc.pages.dev/#person"
+            }
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://garden-avc.pages.dev/#app",
+            "name": "Garden",
+            "url": "https://garden-avc.pages.dev/",
+            "description": "A free, local-first Markdown wiki that runs entirely in your browser. Wikilinks, automatic backlinks, Mermaid link graph, full-text search with fuzzy matching. No server, no account, no tracking.",
+            "applicationCategory": "ProductivityApplication",
+            "applicationSubCategory": "Note-taking",
+            "operatingSystem": "Any (browser with OPFS support)",
+            "browserRequirements": "Requires a modern browser with OPFS support, served from localhost or HTTPS",
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "softwareVersion": "1.0.0",
+            "softwareRequirements": "Browser with Origin Private File System (OPFS) support",
+            "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+            "author": { "@id": "https://garden-avc.pages.dev/#person" },
+            "featureList": "Markdown pages, YAML frontmatter, tags, wikilinks, automatic backlinks, Mermaid link graph, full-text fuzzy search, light and dark themes, offline capable",
+            "screenshot": "",
+            "keywords": "markdown wiki, local-first, OPFS, digital garden, offline notes, backlinks"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://garden-avc.pages.dev/#person",
+            "name": "Swastik Chatterjee",
+            "url": "https://github.com/swastik-chatterjee"
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Where are my pages stored?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Pages are stored locally in your browser's Origin Private File System (OPFS). No server or account is involved, and nothing leaves your device."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Garden free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Garden is free, open-source software licensed under the GNU Affero General Public License v3.0."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Garden work offline?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Garden is local-first and runs entirely in your browser, so it works without a network connection once loaded."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens if I clear my browser storage?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Pages are private to the browser profile and origin where they were created and are not synced or backed up. Clearing that origin's storage can permanently delete them."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
   <body>
     <div id="app"></div>
     <noscript>
-      Garden is a browser-based Markdown wiki and requires JavaScript to run.
-      Pages are stored locally in your browser via OPFS — no server involved.
+      Garden is a free, open-source, local-first Markdown wiki that runs
+      entirely in your browser. Pages are stored privately in the browser's
+      Origin Private File System (OPFS) — no server, no account, no tracking.
+      Features include Markdown pages with YAML frontmatter and tags,
+      [[wikilinks]], automatic backlinks, a Mermaid link graph, full-text
+      search with fuzzy matching, and separate light and dark themes.
+      JavaScript is required to run Garden.
     </noscript>
     <script type="module" src="/src/main.js"></script>
   </body>
