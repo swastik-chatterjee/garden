@@ -1,0 +1,173 @@
+/* ---------- utilities ------------------------------------------------- */
+
+.min-width-0 { min-width: 0; }
+
+/* ---------- rendered markdown ------------------------------------------ */
+
+.markdown-body {
+  max-width: 780px;
+  font-size: 1rem;
+  line-height: 1.75;
+  overflow-wrap: break-word;
+}
+.markdown-body > :first-child { margin-top: 0; }
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3,
+.markdown-body h4, .markdown-body h5, .markdown-body h6 {
+  scroll-margin-top: 96px;
+  margin: 1.6em 0 .65em;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.markdown-body h1 { font-size: 2rem; }
+.markdown-body h2 {
+  font-size: 1.55rem;
+  padding-bottom: .25em;
+  border-bottom: 1px solid rgba(var(--v-theme-on-surface), .12);
+}
+.markdown-body h3 { font-size: 1.3rem; }
+.markdown-body h4 { font-size: 1.12rem; }
+.markdown-body p { margin: .8em 0; }
+.markdown-body ul, .markdown-body ol { padding-left: 1.5em; margin: .8em 0; }
+.markdown-body li { margin: .3em 0; }
+.markdown-body li::marker { color: rgb(var(--v-theme-primary)); }
+
+.markdown-body a { color: rgb(var(--v-theme-primary)); text-underline-offset: 3px; }
+.markdown-body a:hover { text-decoration-thickness: 2px; }
+
+.markdown-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: .875em;
+  background: rgba(var(--v-theme-on-surface), .08);
+  border-radius: 6px;
+  padding: .15em .4em;
+}
+
+.markdown-body pre {
+  background: rgba(var(--v-theme-on-surface), .06);
+  border: 1px solid rgba(var(--v-theme-on-surface), .12);
+  padding: 14px 16px;
+  border-radius: 12px;
+  overflow: auto;
+  margin: 1em 0;
+}
+.markdown-body pre code {
+  background: none; padding: 0; font-size: .85rem; line-height: 1.6;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: .1em 1em;
+  border-left: 4px solid rgb(var(--v-theme-primary));
+  background: rgba(var(--v-theme-primary), .07);
+  border-radius: 0 8px 8px 0;
+  color: rgba(var(--v-theme-on-surface), .85);
+}
+
+.markdown-body hr {
+  border: none;
+  border-top: 2px dashed rgba(var(--v-theme-on-surface), .2);
+  margin: 2em 0;
+}
+
+.markdown-body table { border-collapse: collapse; margin: 1em 0; display: block; overflow-x: auto; max-width: 100%; }
+.markdown-body th, .markdown-body td { border: 1px solid rgba(var(--v-theme-on-surface), .18); padding: 8px 12px; }
+.markdown-body th { background: rgba(var(--v-theme-on-surface), .07); font-weight: 700; text-align: left; }
+
+.markdown-body img { max-width: 100%; border-radius: 10px; }
+
+/* ---------- wikilinks --------------------------------------------------- */
+
+.wikilink {
+  color: rgb(var(--v-theme-primary));
+  text-decoration: none;
+  border-bottom: 1px dashed rgb(var(--v-theme-primary));
+  cursor: pointer;
+  padding: 0 1px;
+  border-radius: 2px;
+  transition: background-color .15s ease;
+}
+.wikilink:hover { background: rgba(var(--v-theme-primary), .12); }
+.wikilink--missing, .wikilink--missing:hover {
+  color: rgb(var(--v-theme-error));
+  border-bottom: 1px dotted rgb(var(--v-theme-error));
+  background: transparent;
+}
+
+/* ---------- mermaid ------------------------------------------------------ */
+
+.mermaid-source, .mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  margin: 1.25em 0;
+  padding: 18px 12px;
+  background: rgba(var(--v-theme-on-surface), .05);
+  border: 1px solid rgba(var(--v-theme-on-surface), .1);
+  border-radius: 12px;
+  min-height: 60px;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+.mermaid-error { border-color: rgba(var(--v-theme-error), .5); }
+.mermaid-error pre {
+  margin: 0; padding: 0; background: none; border: none;
+  color: rgb(var(--v-theme-error));
+  font-size: .8rem; white-space: pre-wrap; max-width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* ---------- editor -------------------------------------------------------- */
+
+.editor-code textarea,
+.editor-code .v-field__input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  min-height: calc(100vh - 320px);
+}
+.preview-pane { min-height: calc(100vh - 320px); overflow: auto; padding: 18px 22px; }
+
+/* ---------- page extras ----------------------------------------------------- */
+
+.toc-card { position: sticky; top: 84px; }
+.toc-line {
+  cursor: pointer;
+  color: rgba(var(--v-theme-on-surface), .78);
+  padding: 4px 0;
+  font-size: .875rem;
+  line-height: 1.35;
+}
+.toc-line:hover { color: rgb(var(--v-theme-primary)); }
+
+.wiki-context {
+  border-left: 2px solid rgba(var(--v-theme-primary), .45);
+  padding-left: 10px;
+  margin-top: 2px;
+}
+.garden-link { cursor: pointer; color: rgb(var(--v-theme-primary)); }
+.garden-link:hover { text-decoration: underline; }
+
+/* ---------- misc -------------------------------------------------------------- */
+
+.hero {
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(var(--v-theme-primary), .18), transparent 55%),
+    radial-gradient(120% 140% at 100% 100%, rgba(var(--v-theme-accent), .16), transparent 60%);
+}
+
+.result-card { cursor: pointer; transition: border-color .15s ease; }
+.result-card:hover { border-color: rgb(var(--v-theme-primary)); }
+
+mark { background: rgba(var(--v-theme-primary), .3); color: inherit; border-radius: 3px; padding: 0 2px; }
+
+.graph-surface {
+  min-height: 300px;
+  padding: 18px;
+  border-radius: 12px;
+  background: rgba(var(--v-theme-on-surface), .05);
+  border: 1px solid rgba(var(--v-theme-on-surface), .1);
+  overflow: auto;
+}
+
+.snippet { color: rgba(var(--v-theme-on-surface), .85); font-size: .9rem; }
