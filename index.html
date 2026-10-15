@@ -15,11 +15,11 @@
     <title>Garden — Local-First Markdown Wiki That Lives in Your Browser (OPFS)</title>
     <meta
       name="description"
-      content="Garden is a free, open-source, local-first Markdown wiki that runs entirely in your browser. Pages are stored privately in OPFS with wikilinks, automatic backlinks, a Mermaid link graph, and full-text fuzzy search. No server, no account, no tracking, works offline."
+      content="Garden is a free, open-source, local-first Markdown wiki that runs entirely in your browser. Keep private notes with wikilinks, daily notes, full-text search, and JSON backup and restore. No server or account."
     />
     <meta
       name="keywords"
-      content="markdown wiki, local-first, OPFS, digital garden, note taking, offline wiki, wikilinks, backlinks, knowledge graph, second brain, browser storage, privacy, vue, vuetify, mermaid, agpl"
+      content="markdown wiki, local-first, OPFS, digital garden, daily notes, note taking, offline wiki, wikilinks, backlinks, knowledge graph, command palette search, browser storage, import export, privacy, accessibility"
     />
     <meta name="author" content="Swastik Chatterjee" />
     <meta name="creator" content="Swastik Chatterjee" />
@@ -55,7 +55,7 @@
     <meta property="og:title" content="Garden — Local-First Markdown Wiki That Lives in Your Browser" />
     <meta
       property="og:description"
-      content="A private Markdown wiki stored in your browser's OPFS. Wikilinks, backlinks, link graph, and full-text search — no server, no account."
+      content="A private Markdown wiki stored in your browser's OPFS. Wikilinks, daily notes, backup and restore, and full-text search — no server or account."
     />
     <meta property="og:url" content="https://garden-avc.pages.dev/" />
     <meta property="og:locale" content="en_US" />
@@ -71,7 +71,7 @@
     <meta name="twitter:title" content="Garden — Local-First Markdown Wiki in Your Browser" />
     <meta
       name="twitter:description"
-      content="A private Markdown wiki that lives entirely in your browser. Wikilinks, backlinks, link graph, and search — no server, no account."
+      content="A private Markdown wiki that lives entirely in your browser. Daily notes, wikilinks, backup and restore, and search — no server or account."
     />
     <meta name="twitter:image:alt" content="Garden — a local OPFS wiki" />
 
@@ -100,7 +100,7 @@
             "@id": "https://garden-avc.pages.dev/#app",
             "name": "Garden",
             "url": "https://garden-avc.pages.dev/",
-            "description": "A free, local-first Markdown wiki that runs entirely in your browser. Wikilinks, automatic backlinks, Mermaid link graph, full-text search with fuzzy matching. No server, no account, no tracking.",
+            "description": "A free, local-first Markdown wiki that runs entirely in your browser. Daily notes, command-palette search, JSON backup and restore, wikilinks, and a Mermaid link graph.",
             "applicationCategory": "ProductivityApplication",
             "applicationSubCategory": "Note-taking",
             "operatingSystem": "Any (browser with OPFS support)",
@@ -111,7 +111,7 @@
             "softwareRequirements": "Browser with Origin Private File System (OPFS) support",
             "license": "https://www.gnu.org/licenses/agpl-3.0.html",
             "author": { "@id": "https://garden-avc.pages.dev/#person" },
-            "featureList": "Markdown pages, YAML frontmatter, tags, wikilinks, automatic backlinks, Mermaid link graph, full-text fuzzy search, light and dark themes, offline capable",
+            "featureList": "Markdown pages, YAML frontmatter, tags, wikilinks, automatic backlinks, daily notes, command-palette full-text search, JSON export and import, Mermaid link graph, light and dark themes, keyboard navigation, reduced motion support, offline capable",
             "screenshot": "",
             "keywords": "markdown wiki, local-first, OPFS, digital garden, offline notes, backlinks"
           },
@@ -154,6 +154,14 @@
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Pages are private to the browser profile and origin where they were created and are not synced or backed up. Clearing that origin's storage can permanently delete them."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I back up or move my garden?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Export a JSON backup and import it into another Garden instance. Existing pages are skipped by default, with an explicit option to overwrite matching paths."
                 }
               }
             ]

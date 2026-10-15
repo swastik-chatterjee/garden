@@ -2,6 +2,24 @@
 
 .min-width-0 { min-width: 0; }
 
+.skip-link {
+  position: fixed;
+  z-index: 10000;
+  top: 8px;
+  left: 8px;
+  padding: 10px 14px;
+  transform: translateY(-160%);
+  border-radius: 6px;
+  background: rgb(var(--v-theme-surface));
+  color: rgb(var(--v-theme-on-surface));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+.skip-link:focus { transform: translateY(0); }
+:focus-visible {
+  outline: 3px solid rgb(var(--v-theme-primary));
+  outline-offset: 3px;
+}
+
 /* ---------- rendered markdown ------------------------------------------ */
 
 .markdown-body {
@@ -137,6 +155,11 @@
   padding: 4px 0;
   font-size: .875rem;
   line-height: 1.35;
+  min-height: 28px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
 }
 .toc-line:hover { color: rgb(var(--v-theme-primary)); }
 
@@ -145,7 +168,17 @@
   padding-left: 10px;
   margin-top: 2px;
 }
-.garden-link { cursor: pointer; color: rgb(var(--v-theme-primary)); }
+.garden-link {
+  cursor: pointer;
+  color: rgb(var(--v-theme-primary));
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .garden-link:hover { text-decoration: underline; }
 
 /* ---------- misc -------------------------------------------------------------- */
@@ -158,6 +191,7 @@
 
 .result-card { cursor: pointer; transition: border-color .15s ease; }
 .result-card:hover { border-color: rgb(var(--v-theme-primary)); }
+.result-card:focus-visible { border-color: rgb(var(--v-theme-primary)); }
 
 mark { background: rgba(var(--v-theme-primary), .3); color: inherit; border-radius: 3px; padding: 0 2px; }
 
@@ -171,3 +205,12 @@ mark { background: rgba(var(--v-theme-primary), .3); color: inherit; border-radi
 }
 
 .snippet { color: rgba(var(--v-theme-on-surface), .85); font-size: .9rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -2,6 +2,7 @@ import 'vuetify/styles';
 import '@/styles/main.css';
 import {
   mdiContentSaveOutline,
+  mdiDownloadOutline,
   mdiDeleteOutline,
   mdiFileDocumentOutline,
   mdiFilePlusOutline,
@@ -13,6 +14,7 @@ import {
   mdiPencilOutline,
   mdiSprout,
   mdiTagOutline,
+  mdiUploadOutline,
   mdiWeatherNight,
   mdiWeatherSunny,
 } from '@mdi/js';
@@ -29,6 +31,7 @@ const vuetify = createVuetify({
     aliases: {
       ...mdiSvgAliases,
       mdiContentSaveOutline,
+      mdiDownloadOutline,
       mdiDeleteOutline,
       mdiFileDocumentOutline,
       mdiFilePlusOutline,
@@ -40,6 +43,7 @@ const vuetify = createVuetify({
       mdiPencilOutline,
       mdiSprout,
       mdiTagOutline,
+      mdiUploadOutline,
       mdiWeatherNight,
       mdiWeatherSunny,
     },

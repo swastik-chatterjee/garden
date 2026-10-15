@@ -7,8 +7,11 @@ Garden is a local-first Markdown wiki that runs in your browser. Pages are store
 - Markdown pages with YAML frontmatter, tags, and `[[wikilinks]]`
 - Automatic backlinks and a Mermaid link graph
 - Full-text search with prefix and fuzzy matching
+- A keyboard-accessible command palette (`Ctrl-K` / `Cmd-K`) and dated daily notes
+- JSON backup export and import, with existing pages protected by default
 - Mermaid diagrams rendered in the browser
 - Separate light and dark themes
+- Keyboard navigation, visible focus, skip link, and reduced-motion support
 
 ## Requirements
 
@@ -16,6 +19,12 @@ Garden is a local-first Markdown wiki that runs in your browser. Pages are store
 - A current browser with OPFS support, opened from `localhost` or a secure HTTPS origin
 
 The garden is private to the browser profile and origin where it was created. It is not synced or backed up by this application. Clearing that origin's browser storage can permanently delete its pages.
+
+Use **Export** in the navigation drawer to download a JSON backup. **Import** accepts that backup format; matching pages are skipped by default, or can be explicitly overwritten. Keep backups somewhere safe because browser storage is not a substitute for a backup.
+
+Choose **Today's note** to open or create `daily/YYYY-MM-DD.md` using the local calendar date.
+
+The interface is built with WCAG 2.1 AA accessibility in mind, including keyboard operation and visible focus. A formal independent conformance audit has not been performed.
 
 ## Develop
 

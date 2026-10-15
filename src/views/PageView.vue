@@ -202,10 +202,11 @@ async function onDelete() {
         <v-card v-if="toc.length" variant="outlined" class="toc-card mb-4">
           <v-card-title class="text-subtitle-1 font-weight-bold">On this page</v-card-title>
           <v-card-text class="pt-0">
-            <a v-for="h in toc" :key="h.id" class="toc-line d-block"
-              :style="{ paddingLeft: (h.level - 1) * 14 + 'px' }" @click="scrollToHeading(h.id)">
+            <button v-for="h in toc" :key="h.id" type="button" class="toc-line d-block"
+              :style="{ paddingLeft: (h.level - 1) * 14 + 'px' }"
+              :aria-label="`Jump to ${h.text}`" @click="scrollToHeading(h.id)">
               {{ h.text }}
-            </a>
+            </button>
           </v-card-text>
         </v-card>
 
@@ -215,8 +216,8 @@ async function onDelete() {
           </v-card-title>
           <v-card-text class="pt-0">
             <div v-for="b in backlinks" :key="b.path" class="mb-4">
-              <a class="text-body-2 font-weight-medium garden-link"
-                @click="router.push({ name: 'page', params: { path: b.path } })">{{ b.title }}</a>
+              <button type="button" class="text-body-2 font-weight-medium garden-link"
+                @click="router.push({ name: 'page', params: { path: b.path } })">{{ b.title }}</button>
               <div v-if="b.context" class="text-caption text-medium-emphasis wiki-context">{{ b.context }}</div>
             </div>
           </v-card-text>

@@ -135,6 +135,65 @@ export async function deleteNote(path) {
   scheduleStats();
 }
 
+export function createBackup() {
+  return JSON.stringify({
+    format: 'garden-backup',
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    pages: pages.value.map(({ path, raw }) => ({ path, content: raw })),
+  }, null, 2);
+}
+
+export async function importBackup(raw, { overwrite = false } = {}) {
+  let backup;
+  try {
+    backup = JSON.parse(String(raw));
+  } catch {
+    throw new Error('This file is not valid JSON.');
+  }
+
+  if (backup?.format !== 'garden-backup' || backup?.version !== 1 || !Array.isArray(backup.pages)) {
+    throw new Error('This is not a supported Garden backup.');
+  }
+
+  const seen = new Set();
+  const incoming = backup.pages.map((entry, index) => {
+    const path = typeof entry?.path === 'string' ? entry.path : '';
+    if (!isSafeMarkdownPath(path) || typeof entry.content !== 'string') {
+      throw new Error(`Backup page ${index + 1} has an invalid Markdown path or content.`);
+    }
+    if (seen.has(path)) throw new Error(`Backup contains the page "${path}" more than once.`);
+    seen.add(path);
+    return { path, content: entry.content };
+  });
+
+  let imported = 0;
+  let skipped = 0;
+  for (const entry of incoming) {
+    if (!overwrite && garden.docs[entry.path]) {
+      skipped++;
+      continue;
+    }
+    await saveNote(entry.path, entry.content);
+    imported++;
+  }
+  return { imported, skipped };
+}
+
+function isSafeMarkdownPath(path) {
+  const parts = path.split('/');
+  return /\.md$/i.test(path) &&
+    !path.startsWith('/') &&
+    !path.includes('\\') &&
+    parts.every((part) =>
+      part &&
+      part === part.trim() &&
+      part !== '.' &&
+      part !== '..' &&
+      !/[\u0000-\u001f\u007f]/.test(part)
+    );
+}
+
 export function suggestPath(folder, title) {
   const dir = String(folder || '').replace(/^\/+|\/+$/g, '');
   const stem = slug(title) || 'untitled';

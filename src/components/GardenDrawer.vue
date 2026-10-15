@@ -5,7 +5,7 @@ import NewPageDialog from './NewPageDialog.vue';
 import { allTags, folders, formatBytes, garden, pages } from '@/services/garden';
 
 defineProps({ modelValue: Boolean });
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'daily-note', 'export-backup', 'import-backup']);
 
 const route = useRoute();
 const dialog = ref(false);
@@ -21,14 +21,24 @@ watch(currentPath, (path) => {
 </script>
 
 <template>
-  <v-navigation-drawer :model-value="modelValue" width="300"
+  <v-navigation-drawer :model-value="modelValue" width="300" aria-label="Garden navigation"
     @update:model-value="emit('update:modelValue', $event)">
 
     <div class="pa-4 pb-2">
       <v-btn block color="primary" variant="flat" size="large"
-        prepend-icon="$mdiFilePlusOutline" @click="dialog = true">
+        prepend-icon="$mdiFilePlusOutline" :disabled="!garden.ready" @click="dialog = true">
         New page
       </v-btn>
+      <v-btn block variant="tonal" class="mt-2" prepend-icon="$mdiFileDocumentOutline"
+        :disabled="!garden.ready" @click="emit('daily-note')">
+        Today's note
+      </v-btn>
+      <div class="d-flex ga-2 mt-2">
+        <v-btn class="flex-1-1-0" variant="text" prepend-icon="$mdiDownloadOutline"
+          :disabled="!garden.ready" @click="emit('export-backup')">Export</v-btn>
+        <v-btn class="flex-1-1-0" variant="text" prepend-icon="$mdiUploadOutline"
+          :disabled="!garden.ready" @click="emit('import-backup')">Import</v-btn>
+      </div>
       <div class="text-caption text-medium-emphasis mt-3">
         {{ garden.ready
           ? pages.length + ' pages · ' + formatBytes(garden.stats.usage) + ' in OPFS'
@@ -36,7 +46,7 @@ watch(currentPath, (path) => {
       </div>
     </div>
 
-    <v-list v-model:opened="opened" nav density="compact">
+    <v-list v-model:opened="opened" nav density="compact" aria-label="Pages and views">
       <v-list-item prepend-icon="$mdiHomeOutline" title="Home" :to="{ name: 'home' }" />
       <v-list-item prepend-icon="$mdiMagnify" title="Search" :to="{ name: 'search' }" />
       <v-list-item prepend-icon="$mdiGraphOutline" title="Link graph" :to="{ name: 'graph' }" />

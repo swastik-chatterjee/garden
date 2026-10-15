@@ -36,7 +36,7 @@ md.inline.ruler.before('link', 'wikilink', (state, silent) => {
 
   if (!silent) {
     const token = state.push('html_inline', '', 0);
-    const attrs = `class="wikilink" data-wikilink="${md.utils.escapeHtml(target)}"`;
+    const attrs = `href="#" class="wikilink" data-wikilink="${md.utils.escapeHtml(target)}"`;
     const anchorAttr = section ? ` data-anchor="${md.utils.escapeHtml(section)}"` : '';
     token.content = `<a ${attrs}${anchorAttr}>${md.utils.escapeHtml(label)}</a>`;
   }

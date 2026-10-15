@@ -48,8 +48,10 @@ function go(path) { router.push({ name: 'page', params: { path } }); }
     <v-row justify="center">
       <v-col cols="12" md="10" lg="8">
 
+        <h1 class="text-h4 font-weight-bold mb-4">Search your garden</h1>
         <v-text-field v-model="q" autofocus variant="outlined" rounded
           prepend-inner-icon="$mdiMagnify" clearable hide-details
+          label="Search pages"
           placeholder="Search pages, tags and content — try “gantt”, “gardn” or “tag:guide”" />
 
         <div v-if="!garden.ready" class="text-center py-12">
@@ -101,7 +103,8 @@ function go(path) { router.push({ name: 'page', params: { path } }); }
           </div>
 
           <v-card v-for="r in result.results" :key="r.path" variant="outlined" class="mb-3 result-card"
-            @click="go(r.path)">
+            role="link" tabindex="0" :aria-label="`Open page ${r.title}`"
+            @click="go(r.path)" @keydown.enter.self.prevent="go(r.path)">
             <v-card-item>
               <v-card-title><span v-html="highlight(r.title, r.terms, trimmed)" /></v-card-title>
               <v-card-subtitle>{{ r.path }}</v-card-subtitle>

@@ -37,7 +37,7 @@ const cards = computed(() => [
                 <v-icon icon="$mdiSprout" size="32" />
               </v-avatar>
               <div>
-                <div class="text-h4 font-weight-bold">Your digital garden</div>
+                <h1 class="text-h4 font-weight-bold">Your digital garden</h1>
                 <div class="text-body-2 text-medium-emphasis">
                   Markdown · Mermaid · full-text search — stored locally in your
                   browser's OPFS. No server, no account.
@@ -80,7 +80,7 @@ const cards = computed(() => [
           </v-row>
 
           <div class="d-flex align-center mb-2">
-            <div class="text-h6">Recently tended</div>
+            <h2 class="text-h6">Recently tended</h2>
             <v-spacer />
             <v-btn variant="text" size="small" :to="{ name: 'search' }">Browse everything</v-btn>
           </div>
